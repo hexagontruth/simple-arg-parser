@@ -107,7 +107,7 @@ $ yourprogram hello.txt
 { filename: 'hello.txt' }
 
 $ yourprogram
-ArgError: Missing required arguments: string
+ArgError: Missing required arguments: filename
 ...
 
 ```
@@ -130,7 +130,7 @@ Some of these option properties will produce weird results when used in combinat
 
 ## Argument parsing
 
-Non-boolean flag arguments (i.e. numbers or strings) can be assigned either in `option=[value]` or `-o [value]` format (where `['option', 'o']` is the option name value). Single or double quotes can be used to include spaces, &c., with all the usual shell quote handling rules in effect.
+Non-boolean flag options (i.e. numbers or strings) can be assigned either in `option=[value]` or `-o [value]` format (where `['option', 'o']` is the option name value). Single or double quotes can be used to include spaces, &c., with all the usual shell quote handling rules in effect.
 
 Short options can be chained together such as e.g. `-abc`, where `a`, `b`, and `c` are distinct boolean options. If an option takes a non-boolean argument it should be the final option in such a chain. Otherwise the following letter will be interpretted as the option value, with a prefixed hyphen. So e.g. in the case of `-abc` where, say, `b` takes a string argument, that value will be set to "-c" and the `-c` flag, if it exists, will not be processed. This is usually not desired.
 
