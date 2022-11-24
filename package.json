@@ -1,0 +1,20 @@
+{
+  "name": "simple-arg-parser",
+  "version": "0.0.1",
+  "description": "Simple command line argument parser",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hexagontruth/simple-arg-parser.git"
+  },
+  "keywords": [
+    "argparse",
+    "argparser"
+  ],
+  "author": "graham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hexagontruth/simple-arg-parser/issues"
+  },
+  "homepage": "https://github.com/hexagontruth/simple-arg-parser#readme"
+}
