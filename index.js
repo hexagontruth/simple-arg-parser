@@ -157,9 +157,13 @@ class Argparser {
   }
 
   parse(...params) {
-    this.add(params.pop() || []);
-    const args = params.pop() || process.argv.slice(2);
-    const { flagMap, stringOpts } = this;
+    const args = [];
+    while (params.length) {
+      let param = params.pop();
+      typeof param[0] == 'object' && this.add(param) || args.push(...param);
+    }
+    args.length || args.push(...process.argv.slice(2));
+    const stringOpts = this.stringOpts.slice();
 
     let config = {};
 
@@ -175,7 +179,7 @@ class Argparser {
       const flag = !!match[1];
       const long = match[1] == '--';
       const arg = match[2];
-      const data = flag && arg ? flagMap[arg] : stringOpts.shift();
+      const data = flag && arg ? this.flagMap[arg] : stringOpts.shift();
 
       // Set value
 
@@ -270,7 +274,7 @@ class Argparser {
 
     // Assign remaining defaults
 
-    config = Object.assign(this.defaults, config);
+    config = Object.assign({}, this.defaults, config);
 
     // Check for required values
 
